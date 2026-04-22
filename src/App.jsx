@@ -1,39 +1,29 @@
 import { useState } from 'react'
-import './App.css'
-import Clock from './components/clock'
+import Clock from './components/Clock'
+import WorkedHours from './components/WorkedHours'
 
-function App() {
+import "./styles/App.css";
+
+function Userecords() {
   const [records, setRecords] = useState([])
-  const formatTime = (date) => {
-    return date.toLocaleTimeString('pt-BR')
-  }
 
-  const Cleanall = ( ) =>{
-    if(records.length < 0 ){
-      return null
-    }
-    else{
-      return setRecords ([])
-    }
-  }
-  const Register = () => {
-    const now = new Date()
-    setRecords([...records, { type: 'entrada', time: now }])
-  }
+  const formatTime = (date) => date.toLocaleTimeString('pt-BR')
+  const Cleanall = () => setRecords([])
+  const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
 
-  const RegisterExit = () => {
-    const now = new Date()
-    setRecords([...records, { type: 'saída', time: now }])
-  }
- 
+  return { records, formatTime, Cleanall, addRecord }
+}
+function App() {
+  const {records, Cleanall, addRecord, formatTime} = Userecords()
   return (
     <>
       <div>
-        <h2>Point Work <Clock/></h2>
+        <h2>Point Work<Clock/></h2>
         <span>Bem vindo ao Point work, Registre seu ponto!</span>
         <div>
-          <button onClick={Register}>Registrar Entrada</button>
-          <button onClick={RegisterExit}>Registrar Saída</button>
+          <button onClick={() => addRecord('entrada')}>Entrada</button>
+          <button onClick={() => addRecord('pausa')}>Pausa</button>
+          <button onClick={() => addRecord('saída')}>Saída</button>
           <button className='Cleanregister' onClick={Cleanall}>Limpar Registros</button>
         </div>
         <h3>Registros de pontos</h3>
@@ -42,15 +32,22 @@ function App() {
             <ul>
               {records.map((record, index) => (
                <li key={index} className={record.type === 'entrada' ? 'entrada' : 'saida'}>
-                {record.type === 'entrada' ? 'Entrada' : 'Saída'} - {formatTime(record.time)}
+               {record.type === 'entrada'
+              ? 'Entrada'
+              : record.type === 'pausa'
+              ? 'Pausa'
+              : 'Saída'} - {formatTime(record.time)}
             </li>
               ))}
             </ul>
           </div>
         )}
       </div>
+      <div>
+        <h1>Horas Trabalhadas</h1>
+        <WorkedHours records={records}/>
+      </div>
     </>
   )
 }
-
 export default App
