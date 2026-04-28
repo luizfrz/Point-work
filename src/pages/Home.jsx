@@ -9,8 +9,7 @@ import "../styles/App.css"
 
 function Home({ records, setRecords }) {
   const navigate = useNavigate()
-    const Clear = () => setRecords([])
-
+  const Clear = () => setRecords([])
   const formatTime = (date) => date.toLocaleTimeString('pt-BR')
   const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
 
@@ -20,16 +19,10 @@ function Home({ records, setRecords }) {
         <h1>Point Work <PiClockCountdownBold/></h1>
 
        <div>
-      {/* <button onClick={Clear}>
-        Limpar os REGISTROS
-      </button>
-      <br /> */}
+      <br />
     </div>
         <button onClick={() => navigate('/point')}>
           <MdOutlineWork/> Registrar ponto
-        </button>
-        <button onClick={() => navigate('/workedhours')}>
-          Ver horas trabalhadas
         </button>
       </div>
 
@@ -57,6 +50,11 @@ function Home({ records, setRecords }) {
         ) : (
           <p>Nenhum registro ainda</p>
         )}
+      </div>
+      <div className="ClearAll"> 
+        <button  className="Clear" onClick={Clear}>
+        Limpar os Registros
+      </button>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
+import Clock from '../components/Clock'
 import { useNavigate } from 'react-router-dom'
-
 function Point({ records, setRecords }) {
   const navigate = useNavigate()
   
@@ -16,7 +16,7 @@ function Point({ records, setRecords }) {
         borderRadius: '10px',
         margin: '20px 0'
       }}>
-        <h1 style={{ color: '#5f9ea0' }}>Registrar Ponto</h1>
+        <h1 style={{ color: '#5f9ea0' }}>Registrar Ponto <Clock/> </h1>
         
         <div style={{ margin: '30px 0' }}>
           <button 
@@ -87,7 +87,7 @@ function Point({ records, setRecords }) {
       <div style={{
         padding: '20px',
         backgroundColor: 'white',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 10px rgba(196, 0, 0, 0.1)',
         borderRadius: '10px'
       }}>
         <h3 style={{ color: '#5f9ea0' }}>Registros: {records.length}</h3>
@@ -106,7 +106,7 @@ function Point({ records, setRecords }) {
             ))}
           </div>
         ) : (
-          <p style={{ color: '#666' }}>Nenhum registro ainda</p>
+          <p style={{ color: '#ec4949' }}>Nenhum registro ainda</p>
         )}
       </div>
     </div>
