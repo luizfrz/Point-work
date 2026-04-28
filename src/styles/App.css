@@ -3,17 +3,6 @@
     margin: 0%;
     box-sizing: border-box;
 }
-body{
-    background-color: rgb(233, 233, 233);
-}
-.container{
-    background-color: aliceblue;
-    font-size: 15px;
-    text-align: center;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    color: cadetblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 p{
     color: black;
     background-color: aliceblue;
@@ -25,6 +14,39 @@ p{
     border-radius: 4px;
     border: none;
     margin-left: 90%;
+}
+span{
+    font-size: 25px;
+
+}
+span svg{
+    font-size: 30px;
+    color: rgb(8, 107, 110);
+}
+li{
+   list-style: none;
+   color: black;
+   font-size: 15px;
+}
+button{
+    padding:10px;
+    background-color: aliceblue;
+    font-size: 15px;
+    margin: 20px;
+    text-align: center;
+    border: 2px solid #5f9ea0;
+    border-radius: 5px;
+    color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    padding: 20px;
+    background-color: aliceblue;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .pointInitial{
     background-color: rgb(128, 157, 182);
@@ -68,4 +90,30 @@ p{
 }
 .pointExit:hover{
     background-color: rgb(148, 184, 214);
+}
+.General{
+    background-color: aliceblue;
+    margin: 30px;
+    text-align: center;
+    width:50%;
+    padding: 20px;
+    margin-left: 24%;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.Last{
+    background-color: aliceblue;
+    margin: 30px;
+    text-align: center;
+    width:50%;
+    padding: 20px;
+    margin-left: 24%;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
