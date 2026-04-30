@@ -1,11 +1,6 @@
-import { PiClockCountdownBold } from "react-icons/pi"
-import { MdOutlineLockClock } from "react-icons/md"
-import { GiArchiveRegister } from "react-icons/gi"
-import { MdOutlineWork } from "react-icons/md"
-import { IoIosPersonAdd } from "react-icons/io"
 
 import { useNavigate } from 'react-router-dom'
-import "../styles/App.css"
+import "../styles/Home.css"
 
 function Home({ records, setRecords }) {
   const navigate = useNavigate()
@@ -16,29 +11,29 @@ function Home({ records, setRecords }) {
   return (
     <div>
       <div className='container'>
-        <h1>Point Work <PiClockCountdownBold/></h1>
+        <h1>Point Work</h1>
 
        <div>
       <br />
     </div>
-        <button onClick={() => navigate('/point')}>
-          <MdOutlineWork/> Registrar ponto
-        </button>
+        <button onClick={() => navigate('/point')}> Registrar ponto  </button>
+        <button onClick={()=> navigate('/Register')}>Cadastrar colaborador</button>
       </div>
 
-
+ 
       <div className='General'>
-        <h1 className='Vision'>Visão geral</h1>
+        <h1>Visão geral</h1>
+        <br/>
         <div>
-          <span><IoIosPersonAdd/> Total Colaboradores: 1</span>
+          <span> Total Colaboradores: </span>
         </div>
         <div>
-          <span><MdOutlineLockClock/> Total de registros: {records.length}</span>
+          <span> Total de registros: {records.length}</span>
         </div>
       </div>
 
       <div className='Last'>
-        <h1><GiArchiveRegister/> Últimos registros</h1>
+        <h1> Últimos registros</h1>
         {records.length > 0 ? (
           <ul>
             {records.slice(-5).map((record, index) => (

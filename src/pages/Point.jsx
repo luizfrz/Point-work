@@ -1,5 +1,7 @@
+import { GiAerialSignal } from 'react-icons/gi'
 import Clock from '../components/Clock'
 import { useNavigate } from 'react-router-dom'
+
 function Point({ records, setRecords }) {
   const navigate = useNavigate()
   
@@ -7,7 +9,7 @@ function Point({ records, setRecords }) {
   const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f0f8ff', minHeight: '100vh' }}>
+    <div style={{ padding:0, margin:0, boxSizing:'border-box' }}>
       <div style={{
         padding: '20px',
         backgroundColor: 'white',
@@ -16,7 +18,11 @@ function Point({ records, setRecords }) {
         borderRadius: '10px',
         margin: '20px 0'
       }}>
-        <h1 style={{ color: '#5f9ea0' }}>Registrar Ponto <Clock/> </h1>
+        <h1 style={{
+           color: '#5f9ea0',
+           fontSize:'25px'
+
+        }}>Registrar Ponto <Clock/> </h1>
         
         <div style={{ margin: '30px 0' }}>
           <button 
@@ -54,7 +60,7 @@ function Point({ records, setRecords }) {
           <button 
             style={{
               padding: '15px 30px',
-              backgroundColor: '#f44336',
+              backgroundColor: '#5f9ea0',
               color: 'white',
               border: 'none',
               borderRadius: '5px',
@@ -97,7 +103,8 @@ function Point({ records, setRecords }) {
               <div key={index} style={{ 
                 margin: '10px 0', 
                 padding: '10px', 
-                backgroundColor: '#f9f9f9',
+                backgroundColor: '#5f9ea0',
+                color:'white',
                 borderRadius: '5px',
                 borderLeft: '4px solid #5f9ea0'
               }}>
