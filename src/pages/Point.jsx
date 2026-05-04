@@ -102,9 +102,12 @@ function Point({ records, setRecords }) {
             {records.map((record, index) => (
               <div key={index} style={{ 
                 margin: '10px 0', 
+                fontFamily:'system-ui',
                 padding: '10px', 
                 backgroundColor: '#5f9ea0',
                 color:'white',
+                width:'30%',
+                marginLeft:'35%',
                 borderRadius: '5px',
                 borderLeft: '4px solid #5f9ea0'
               }}>
@@ -113,7 +116,7 @@ function Point({ records, setRecords }) {
             ))}
           </div>
         ) : (
-          <p style={{ color: '#ec4949' }}>Nenhum registro ainda</p>
+          <p style={{ color: '#ec4949', fontSize: '20px', marginLeft:'45%' }}>Nenhum registro ainda</p>
         )}
       </div>
     </div>

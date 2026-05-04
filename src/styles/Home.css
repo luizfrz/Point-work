@@ -3,6 +3,14 @@
     margin: 0%;
     box-sizing: border-box;
 }
+:root{
+    --dark-blue:  #809db6;
+    --light-white: #f0f8ff;
+    --gradient-blue-white:linear-gradient(to right, #366c6e, #809db6);
+    --color-white: #f0f8f0;
+    --color-blue: #5f9ea0;
+    --font-point: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 p{
     color: black;
     background-color: aliceblue;
@@ -24,18 +32,24 @@ span svg{
 }
 li{
    list-style: none;
-   color: black;
+   background-color: var(--color-blue);
+   width: 40%;
+   padding: 4px;
+   margin-left: 30%;
+   border-radius: 4px;
+   font-family: var(--font-point);
+   color: var(--color-white);
    font-size: 15px;
 }
 button{
     padding:10px;
-    background-color: aliceblue;
+    background-color: var(--color-blue);
     font-size: 15px;
     margin: 20px;
     text-align: center;
-    border: 2px solid #5f9ea0;
+    border: none;
     border-radius: 5px;
-    color: cadetblue;
+    color: var(--color-white);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container{
@@ -46,49 +60,6 @@ button{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     color: cadetblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.pointInitial{
-    background-color: rgb(128, 157, 182);
-    font-size: 20px;
-    margin: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: azure;
-    margin-left: 43%;
-    cursor: pointer;
-}
-.pointInitial:hover{
-    background-color: rgb(148, 184, 214);
-}
-.pointPause{
-    background-color: rgb(128, 157, 182);
-    font-size: 20px;
-    margin: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: azure;
-    cursor: pointer;
-}
-.pointPause:hover{
-    background-color: rgb(148, 184, 214);
-}
-.pointExit{
-    background-color: rgb(128, 157, 182);
-    font-size: 20px;
-    margin: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: azure;
-    cursor: pointer;
-}
-.pointExit:hover{
-    background-color: rgb(148, 184, 214);
 }
 .General{
     background-color: aliceblue;

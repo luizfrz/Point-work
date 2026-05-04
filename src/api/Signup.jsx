@@ -1,7 +1,7 @@
 import { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
-export default function Cadastro() {
+export default function RegisterUser() {
   const [form, setForm] = useState({
     email: "",
     senha: ""
@@ -18,10 +18,14 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/api/register", form);
+      const response = await axios.post(
+        "/",
+        form
+      );
       console.log("Sucesso:", response.data);
     } catch (error) {
-      console.log("Erro:", error.response?.data);
+      console.log("Erro:", error.response?.data || error.message);
     }
   };
+
 }
