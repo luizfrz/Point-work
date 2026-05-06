@@ -1,4 +1,3 @@
-import { GiAerialSignal } from 'react-icons/gi'
 import Clock from '../components/Clock'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,7 +35,7 @@ function Point({ records, setRecords }) {
               margin: '10px',
               cursor: 'pointer'
             }}
-            onClick={() => addRecord('entrada')}
+            onClick={() => addRecord('Entrada')}
           >
             Entrada
           </button>
@@ -52,7 +51,7 @@ function Point({ records, setRecords }) {
               margin: '10px',
               cursor: 'pointer'
             }}
-            onClick={() => addRecord('pausa')}
+            onClick={() => addRecord('Pausa')}
           >
             Pausa
           </button>
@@ -68,7 +67,7 @@ function Point({ records, setRecords }) {
               margin: '10px',
               cursor: 'pointer'
             }}
-            onClick={() => addRecord('saída')}
+            onClick={() => addRecord('Saída')}
           >
             Saída
           </button>
@@ -101,7 +100,7 @@ function Point({ records, setRecords }) {
           <div>
             {records.map((record, index) => (
               <div key={index} style={{ 
-                margin: '10px 0', 
+                margin: '4px ', 
                 fontFamily:'system-ui',
                 padding: '10px', 
                 backgroundColor: '#5f9ea0',
@@ -116,7 +115,14 @@ function Point({ records, setRecords }) {
             ))}
           </div>
         ) : (
-          <p style={{ color: '#ec4949', fontSize: '20px', marginLeft:'45%' }}>Nenhum registro ainda</p>
+          <p style={{
+            color: '#d46565',
+            fontSize: '20px', 
+            marginLeft:'45%', 
+            margin:'20px', 
+            marginRight:'30px', 
+            textAlign:'center' 
+          }}>Nenhum registro ainda</p>
         )}
       </div>
     </div>

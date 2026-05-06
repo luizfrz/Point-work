@@ -17,15 +17,16 @@ function Home({ records, setRecords }) {
     </div>
         <button onClick={() => navigate('/point')}> Registrar ponto  </button>
         <button onClick={()=> navigate('/Register')}>Cadastrar colaborador</button>
+        <button  className="Clear" onClick={Clear}> Limpar os Registros </button>
       </div>
 
  
       <div className='General'>
         <h1>Visão geral</h1>
-        <br/>
         <div>
-          <span> Total Colaboradores: </span>
+          <h2>Grafico de Pontos</h2>
         </div>
+        <br/>
         <div>
           <span> Total de registros: {records.length}</span>
         </div>
@@ -37,18 +38,15 @@ function Home({ records, setRecords }) {
           <ul>
             {records.slice(-5).map((record, index) => (
               <li key={index}>
-                <strong>{record.type}</strong> - {formatTime(record.time)}
+                {record.type}- {formatTime(record.time)}
               </li>
             ))}
           </ul>
         ) : (
-          <p>Nenhum registro ainda</p>
+          <p className='N-Register'>Nenhum registro ainda</p>
         )}
       </div>
       <div className="ClearAll"> 
-        <button  className="Clear" onClick={Clear}>
-        Limpar os Registros
-      </button>
       </div>
     </div>
   )
