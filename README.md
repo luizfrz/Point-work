@@ -1,9 +1,15 @@
 # Point Work
 ## Sistema de registrar pontos
 
-# Home 
-<img width="1131" height="495" alt="Captura de tela de 2026-04-28 13-40-30" src="https://github.com/user-attachments/assets/728962a0-833e-4857-aa07-8b1ace5510be" />
 
-# Registros
-<img width="1138" height="515" alt="Captura de tela de 2026-04-28 13-40-17" src="https://github.com/user-attachments/assets/1c145e69-a516-42b1-8828-593d730cd97c" />
+
+
+### Funcionalidades
+- Cadastros
+- Grafico
+- Registro de pontos
+- Limpar Registro de pontos
+
+### Preview
+https://jam.dev/c/2007e5e2-be66-4662-85ba-9a4232d826a3
 
