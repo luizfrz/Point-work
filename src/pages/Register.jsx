@@ -1,27 +1,11 @@
 import { useState } from 'react'
-import { useFormStatus } from "react-dom";
 import { useNavigate } from 'react-router-dom'
 import { useActionState } from "react";
-// import { signUpNewUser } from "../api/Signup";
 
 import "../styles/Register.css"
 
 function Register() {
     const navigate = useNavigate()
-    const [message, signupAction] = useActionState(signup, null);
-    const { pending } = useFormStatus();
-
-        async function signup(prevState, formData) {
-
-        const email = formData.get("email");
-        try {
-        await signUpNewUser(email);
-        alert(`Adicionado "${signup}"`);
-        } catch (err) {
-        return err.toString();
-        }
-    }
-
     return (
         <div>
             <div className='Inital'>
@@ -37,10 +21,10 @@ function Register() {
                 <label>Senha</label>
                 <input type="password"  required />
                 <br/> 
-               <button action={email} className='btn-signup' type='submit' disabled={pending}> {pending ? "Enviando cadastro..." : "Cadastrar"}</button>
-               {!!message && <p>{message}</p>}
+               <button  className='btn-signup' type='submit'>Cadastrar</button>
             </form>
             </div>
+            
             <div>
         </div>
         </div>

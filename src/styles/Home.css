@@ -105,6 +105,6 @@ button{
     margin: 10px;
 }
 .Data-Graph{
-    background-color: var(--dark-blue);
-    margin-left: 9%;
+    background-color: rgba(167, 168, 158, 0.527);
+    margin-left: 35px;
 }

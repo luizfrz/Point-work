@@ -94,12 +94,15 @@ function Point({ records, setRecords }) {
         boxShadow: '0 2px 10px rgba(196, 0, 0, 0.1)',
         borderRadius: '10px'
       }}>
-        <h3 style={{ color: '#5f9ea0' }}>Registros: {records.length}</h3>
+        <h3 style={{
+           color: '#5f9ea0',
+           fontFamily:'system-ui',
+        }}>Registros: <strong>{records.length}</strong></h3>
         {records.length > 0 ? (
           <div>
             {records.map((record, index) => (
               <div key={index} style={{ 
-                margin: '4px ', 
+                margin: '5px ', 
                 fontFamily:'system-ui',
                 padding: '10px', 
                 backgroundColor: '#5f9ea0',
@@ -114,14 +117,17 @@ function Point({ records, setRecords }) {
             ))}
           </div>
         ) : (
-          <p style={{
-            color: '#d46565',
-            fontSize: '20px', 
-            marginLeft:'45%', 
-            margin:'20px', 
-            marginRight:'30px', 
-            textAlign:'center' 
-          }}>Nenhum registro ainda</p>
+          <span style={{
+            color: '#5f99e0',
+            background:'#e6e3e1',
+            fontSize: '20px',
+            width:'200px',
+            textAlign:'center',
+            marginLeft:'2%',
+            padding:'5px',
+            borderRadius:'10px',
+            fontFamily:'system-ui'
+          }}>Nenhum registro localizado.</span>
         )}
       </div>
     </div>
