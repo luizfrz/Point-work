@@ -19,8 +19,7 @@ function Point({ records, setRecords }) {
       }}>
         <h1 style={{
            color: '#5f9ea0',
-           fontSize:'25px'
-
+           fontSize:'25px',
         }}>Registrar Ponto <Clock/> </h1>
         
         <div style={{ margin: '30px 0' }}>
@@ -110,7 +109,7 @@ function Point({ records, setRecords }) {
                 borderRadius: '5px',
                 borderLeft: '4px solid #5f9ea0'
               }}>
-                <strong>{record.type}</strong> - {formatTime(record.time)}
+                <strong>{record.type}</strong> : {formatTime(record.time)}
               </div>
             ))}
           </div>

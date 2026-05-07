@@ -34,7 +34,7 @@ span svg{
 li{
    list-style: none;
    background-color: var(--color-blue);
-   width: 30%;
+   width: 40%;
    padding: 4px;
    margin: 5px;
    border-radius: 4px;
@@ -78,8 +78,8 @@ button{
     background-color: aliceblue;
     margin: 30px;
     text-align: center;
-    width:50%;
     padding: 20px;
+    width: 50%;
     margin-left: 24%;
     font-size: 9px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -100,4 +100,11 @@ button{
 }
 .Records{
     margin-left: 33%;
+}
+.Point-Day{
+    margin: 10px;
+}
+.Data-Graph{
+    background-color: var(--dark-blue);
+    margin-left: 9%;
 }
