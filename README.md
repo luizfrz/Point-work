@@ -6,7 +6,7 @@
 
 ### Funcionalidades
 - Cadastros
-- Grafico
+- Grafico registro de (Entrada, Pausa, Saida)
 - Registro de pontos
 - Limpar Registro de pontos
 
