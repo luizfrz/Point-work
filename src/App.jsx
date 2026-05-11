@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home records={records} setRecords={setRecords} />} />
-      <Route path="Register" element={<Register records={records} setRecords={setRecords} />} />
+      <Route path="/Register" element={<Register records={records} setRecords={setRecords} />} />
       <Route path="/point" element={<Point records={records} setRecords={setRecords} />} />
     </Routes>
   )

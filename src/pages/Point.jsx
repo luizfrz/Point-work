@@ -8,15 +8,16 @@ function Point({ records, setRecords }) {
   const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
 
   return (
-    <div style={{ padding:0, margin:0, boxSizing:'border-box' }}>
-      <div style={{
-        padding: '20px',
-        backgroundColor: 'white',
-        textAlign: 'center',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        borderRadius: '10px',
-        margin: '20px 0'
-      }}>
+      <div style={{ padding:0, margin:0, boxSizing:'border-box' }}>
+        <div style={{
+          padding: '20px',
+          backgroundColor: 'white',
+          textAlign: 'center',
+          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+          borderRadius: '10px',
+          margin: '20px 0'
+        }}>
+          
         <h1 style={{
            color: '#5f9ea0',
            fontSize:'25px',

@@ -12,7 +12,7 @@ function Home({ records, setRecords }) {
   const formatTime = (date) => date.toLocaleTimeString('pt-BR')
   const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
 
-  const Entrance = records.filter(r => r.type === "Entrada").length
+  const Enter = records.filter(r => r.type === "Entrada").length
   const Stop = records.filter(r => r.type === "Pausa").length
   const Exit = records.filter(r => r.type=== "Saída").length
 
@@ -22,7 +22,7 @@ function Home({ records, setRecords }) {
     datasets: [
       {
         data: [
-          Entrance,
+          Enter,
           Stop,
           Exit 
         ],
@@ -36,7 +36,7 @@ function Home({ records, setRecords }) {
 
   return (
     <div>
-      <div className='container'>
+      <div className='Container'>
         <h1>Point Work</h1>
        <div>
       <br />
@@ -47,7 +47,7 @@ function Home({ records, setRecords }) {
       </div>
 
  
-      <div className='General'>
+      <div className='Geral'>
         <h1>Visão geral</h1>
         <div>
           <h2 className='Point-Day'> Pontos batido no dia </h2>
@@ -63,7 +63,7 @@ function Home({ records, setRecords }) {
         </div>
       </div>
 
-      <div className='Last'>
+      <div className='History'>
         <h1> Últimos Registros</h1>
         {records.length > 0 ? (
           <ul >
@@ -74,10 +74,10 @@ function Home({ records, setRecords }) {
             ))}
           </ul>
         ) : (
-          <p className='N-Records'>Nenhum registro ainda</p>
+          <p className='Not-Register'>Nenhum registro ainda</p>
         )}
       </div>
-      <div className="ClearAll"> 
+      <div className="Clear-All"> 
       </div>
     </div>
   )
