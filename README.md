@@ -2,16 +2,6 @@
 
 Sistema web simples para cadastro de colaboradores e registro de ponto eletrônico. Tudo roda no navegador e os dados ficam salvos localmente, sem necessidade de backend.
 
-## Funcionalidades
-
-* Cadastro de colaboradores (nome, cargo e e-mail opcional) com remoção
-* Registro de ponto por colaborador: Entrada, Pausa e Saída
-* Painel com contadores e gráfico dos pontos batidos no dia
-* Lista dos últimos registros, com o nome do colaborador
-* Limpeza do histórico de registros
-* Layout responsivo, com navegação entre as telas
-
-## Tecnologias
 
 <p>
   <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /></a>
@@ -23,6 +13,15 @@ Sistema web simples para cadastro de colaboradores e registro de ponto eletrôni
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   <a href="https://eslint.org/"><img src="https://img.shields.io/badge/ESLint-9-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint" /></a>
 </p>
+
+## Funcionalidades
+
+* Cadastro de colaboradores (nome, cargo e e-mail opcional) com remoção
+* Registro de ponto por colaborador: Entrada, Pausa e Saída
+* Painel com contadores e gráfico dos pontos batidos no dia
+* Lista dos últimos registros, com o nome do colaborador
+* Limpeza do histórico de registros
+* Layout responsivo, com navegação entre as telas
 
 ## Requisitos
 
