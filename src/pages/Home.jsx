@@ -1,83 +1,95 @@
-import { useNavigate } from 'react-router-dom'
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import "../styles/Home.css"
+import { Doughnut } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { exportRecordsToExcel } from '../utils/exportExcel.js'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend)
 
-function Home({ records, setRecords }) {
-  const navigate = useNavigate()
-  const Clear = () => setRecords([])
-  
-  const formatTime = (date) => date.toLocaleTimeString('pt-BR')
-  const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
+const types = ['Entrada', 'Pausa', 'Saída']
 
-  const Enter = records.filter(r => r.type === "Entrada").length
-  const Stop = records.filter(r => r.type === "Pausa").length
-  const Exit = records.filter(r => r.type=== "Saída").length
-
+function Home({ employees, records, setRecords }) {
+  const today = new Date().toDateString()
+  const todayRecords = records.filter(r => new Date(r.time).toDateString() === today)
+  const nameOf = (id) => employees.find(e => e.id === id)?.name ?? 'Removido'
 
   const chartData = {
-    labels: ["Entrada", "Pausa", "Saída"],
+    labels: types,
     datasets: [
       {
-        data: [
-          Enter,
-          Stop,
-          Exit 
-        ],
-        backgroundColor: ["#12a712", "#c7aa08","#ca2557"],
-        borderWidth:1,
-        respoive: true,
-        maintainAspectRatio: false
+        data: types.map(type => todayRecords.filter(r => r.type === type).length),
+        backgroundColor: ['#16a34a', '#d97706', '#dc2626'],
+        borderWidth: 2,
       },
     ],
-  };
+  }
+
+  const handleExport = async () => {
+    try {
+      await exportRecordsToExcel(employees, records)
+    } catch (error) {
+      console.error(error)
+      window.alert(`Não foi possível exportar: ${error.message}`)
+    }
+  }
+
+  const clearRecords = () => {
+    if (window.confirm('Apagar todos os registros de ponto?')) setRecords([])
+  }
 
   return (
-    <div>
-      <div className='Container'>
-        <h1>Point Work</h1>
-       <div>
-      <br />
-    </div>
-        <button onClick={() => navigate('/point')}> Registrar ponto  </button>
-        <button onClick={()=> navigate('/Register')}>Cadastrar colaborador</button>
-        <button className="Clear" onClick={Clear}> Limpar os Registros </button>
-      </div>
-
- 
-      <div className='Geral'>
-        <h1>Visão geral</h1>
-        <div>
-          <h2 className='Point-Day'> Pontos batido no dia </h2>
-
-          <div className='Chart-container'>
-             <Doughnut className='Data-Graph' data={chartData} />
-          </div>
-
+    <div className="grid">
+      <div className="stats">
+        <div className="card stat">
+          <span className="stat-value">{employees.length}</span>
+          <span className="stat-label">Colaboradores</span>
         </div>
-        <br/>
-        <div>
-          <span> Total de registros: {records.length}</span>
+        <div className="card stat">
+          <span className="stat-value">{todayRecords.length}</span>
+          <span className="stat-label">Pontos hoje</span>
+        </div>
+        <div className="card stat">
+          <span className="stat-value">{records.length}</span>
+          <span className="stat-label">Total de registros</span>
         </div>
       </div>
 
-      <div className='History'>
-        <h1> Últimos Registros</h1>
-        {records.length > 0 ? (
-          <ul >
-            {records.slice(-5).map((record, index) => (
-              <li className='Records' key={index}> 
-                {record.type}: {formatTime(record.time)}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className='Not-Register'>Nenhum registro ainda</p>
-        )}
-      </div>
-      <div className="Clear-All"> 
+      <div className="grid two-col">
+        <section className="card">
+          <h2>Pontos batidos no dia</h2>
+          {todayRecords.length > 0 ? (
+            <div className="chart">
+              <Doughnut data={chartData} options={{ maintainAspectRatio: false }} />
+            </div>
+          ) : (
+            <p className="empty">Nenhum ponto batido hoje.</p>
+          )}
+        </section>
+
+        <section className="card">
+          <h2>Últimos registros</h2>
+          {records.length > 0 ? (
+            <ul className="list">
+              {[...records].reverse().slice(0, 5).map(record => (
+                <li key={record.id} className="list-item">
+                  <div>
+                    <strong>{nameOf(record.employeeId)}</strong>
+                    <small>{record.type}</small>
+                  </div>
+                  <small>{new Date(record.time).toLocaleString('pt-BR')}</small>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="empty">Nenhum registro ainda.</p>
+          )}
+          {records.length > 0 && (
+            <div className="actions">
+              <button className="btn btn-sm" onClick={handleExport}>
+                Exportar Excel
+              </button>
+              <button className="btn btn-danger btn-sm" onClick={clearRecords}>Limpar registros</button>
+            </div>
+          )}
+        </section>
       </div>
     </div>
   )

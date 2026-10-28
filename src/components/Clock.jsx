@@ -11,9 +11,5 @@ export default function Clock() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <h2>
-      {time.toLocaleTimeString()}
-    </h2>
-  );
+  return <span>{time.toLocaleTimeString('pt-BR')}</span>;
 }

@@ -1,136 +1,70 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Clock from '../components/Clock'
-import { useNavigate } from 'react-router-dom'
 
-function Point({ records, setRecords }) {
-  const navigate = useNavigate()
-  
-  const formatTime = (date) => date.toLocaleTimeString('pt-BR')
-  const addRecord = (type) => setRecords(prev => [...prev, { type, time: new Date() }])
+const types = ['Entrada', 'Pausa', 'Saída']
+
+function Point({ employees, records, setRecords }) {
+  const [employeeId, setEmployeeId] = useState('')
+
+  const formatTime = (iso) => new Date(iso).toLocaleTimeString('pt-BR')
+  const addRecord = (type) =>
+    setRecords(prev => [...prev, { id: crypto.randomUUID(), employeeId, type, time: new Date().toISOString() }])
+
+  const selected = records.filter(r => r.employeeId === employeeId)
+
+  if (employees.length === 0) {
+    return (
+      <section className="card center">
+        <h2>Registrar ponto</h2>
+        <p className="empty">Cadastre um colaborador antes de registrar o ponto.</p>
+        <Link className="btn" to="/register">Cadastrar colaborador</Link>
+      </section>
+    )
+  }
 
   return (
-      <div style={{ padding:0, margin:0, boxSizing:'border-box' }}>
-        <div style={{
-          padding: '20px',
-          backgroundColor: 'white',
-          textAlign: 'center',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          borderRadius: '10px',
-          margin: '20px 0'
-        }}>
-          
-        <h1 style={{
-           color: '#5f9ea0',
-           fontSize:'25px',
-        }}>Registrar Ponto <Clock/> </h1>
-        
-        <div style={{ margin: '30px 0' }}>
-          <button 
-            style={{
-              padding: '15px 30px',
-              backgroundColor: '#5f9ea0',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              fontSize: '16px',
-              margin: '10px',
-              cursor: 'pointer'
-            }}
-            onClick={() => addRecord('Entrada')}
-          >
-            Entrada
-          </button>
-          
-          <button 
-            style={{
-              padding: '15px 30px',
-              backgroundColor: '#5f9ea0',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              fontSize: '16px',
-              margin: '10px',
-              cursor: 'pointer'
-            }}
-            onClick={() => addRecord('Pausa')}
-          >
-            Pausa
-          </button>
-          
-          <button 
-            style={{
-              padding: '15px 30px',
-              backgroundColor: '#5f9ea0',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              fontSize: '16px',
-              margin: '10px',
-              cursor: 'pointer'
-            }}
-            onClick={() => addRecord('Saída')}
-          >
-            Saída
-          </button>
-        </div>
-        
-        <button 
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#5f9ea0',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            fontSize: '14px',
-            cursor: 'pointer'
-          }}
-          onClick={() => navigate('/')}
-        >
-          Voltar ao Home
-        </button>
-      </div>
-      
-      <div style={{
-        padding: '20px',
-        backgroundColor: 'white',
-        boxShadow: '0 2px 10px rgba(196, 0, 0, 0.1)',
-        borderRadius: '10px'
-      }}>
-        <h3 style={{
-           color: '#5f9ea0',
-           fontFamily:'system-ui',
-        }}>Registros: <strong>{records.length}</strong></h3>
-        {records.length > 0 ? (
-          <div>
-            {records.map((record, index) => (
-              <div key={index} style={{ 
-                margin: '5px ', 
-                fontFamily:'system-ui',
-                padding: '10px', 
-                backgroundColor: '#5f9ea0',
-                color:'white',
-                width:'30%',
-                marginLeft:'35%',
-                borderRadius: '5px',
-                borderLeft: '4px solid #5f9ea0'
-              }}>
-                <strong>{record.type}</strong> : {formatTime(record.time)}
-              </div>
+    <div className="grid two-col">
+      <section className="card center">
+        <h2>Registrar ponto</h2>
+        <div className="clock"><Clock /></div>
+
+        <label className="form">
+          Colaborador
+          <select value={employeeId} onChange={(e) => setEmployeeId(e.target.value)}>
+            <option value="">Selecione...</option>
+            {employees.map(e => (
+              <option key={e.id} value={e.id}>{e.name}</option>
             ))}
-          </div>
+          </select>
+        </label>
+
+        <div className="actions">
+          {types.map(type => (
+            <button key={type} className="btn btn-lg" disabled={!employeeId} onClick={() => addRecord(type)}>
+              {type}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="card">
+        <h2>Registros <span className="badge">{selected.length}</span></h2>
+        {!employeeId ? (
+          <p className="empty">Selecione um colaborador.</p>
+        ) : selected.length > 0 ? (
+          <ul className="list">
+            {[...selected].reverse().map(record => (
+              <li key={record.id} className="list-item">
+                <strong>{record.type}</strong>
+                <small>{formatTime(record.time)}</small>
+              </li>
+            ))}
+          </ul>
         ) : (
-          <span style={{
-            color: '#5f99e0',
-            background:'#e6e3e1',
-            fontSize: '20px',
-            width:'200px',
-            textAlign:'center',
-            marginLeft:'2%',
-            padding:'5px',
-            borderRadius:'10px',
-            fontFamily:'system-ui'
-          }}>Nenhum registro localizado.</span>
+          <p className="empty">Nenhum registro localizado.</p>
         )}
-      </div>
+      </section>
     </div>
   )
 }
